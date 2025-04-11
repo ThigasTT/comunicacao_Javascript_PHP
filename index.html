@@ -7,13 +7,20 @@
     <script>
         function boasVindas(){
             var nome = document.getElementById('nome').value;
-            
+            var requisicao = new XMLHttpRequest();
 
+            requisicao.open("GET","processar.php?nome="+nome)
+            requisicao.send();
+            requisicao.onload = function() {
+                document.getElementById("resposta").innerHTML = this.responseText
+            }
         }
+            
     </script>
 </head>
 <body>
     <p><input id="nome" type="text" placeholder="digite seu nome"></p>
     <p><button onclick="boasVindas()">enviar</button></p>
+    <p id="resposta"></p>
 </body>
 </html>
