@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        function boasVindas(){
+        function boasVindas() {
+            //recebimento da variavel nome
             var nome = document.getElementById('nome').value;
+            //criacao da instancia requisição
             var requisicao = new XMLHttpRequest();
-
-            requisicao.open("GET","processar.php?nome="+nome)
+            //preparaçao da requisição ao servidor
+            requisicao.open("GET", "processar.php?nome=" + nome)
+            //requisição ao servidor
             requisicao.send();
-            requisicao.onload = function() {
+            //resultado da requisição
+            requisicao.onload = function () {
                 document.getElementById("resposta").innerHTML = this.responseText
             }
         }
-            
+
     </script>
 </head>
+
 <body>
+    <!--formulario que envia os dados para o Javascript-->
     <p><input id="nome" type="text" placeholder="digite seu nome"></p>
     <p><button onclick="boasVindas()">enviar</button></p>
     <p id="resposta"></p>
 </body>
+
 </html>
